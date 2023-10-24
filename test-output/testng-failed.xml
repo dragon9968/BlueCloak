@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [NopCommerce]">
+  <test thread-count="5" name="Run on Firefox(failed)">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="com.bluecloak.map.Sample_E2E_Test_Map">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="BlueCloak_05_Add_Interface_To_Map"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- com.bluecloak.map.Sample_E2E_Test_Map -->
+    </classes>
+  </test> <!-- Run on Firefox(failed) -->
+</suite> <!-- Failed suite [NopCommerce] -->

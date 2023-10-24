@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="NopCommerce">
+
+<listeners>
+</listeners>
+
+<!--Global -->
+ 
+  <test name="Run on Firefox">
+     <parameter name = "browser" value = "firefox"/>
+    <classes>  
+      <class name="com.bluecloak.map.Sample_E2E_Test_Map"/>
+    </classes>
+  </test> 
+  
+  <!-- 
+    <test name="Run on Chrome">
+     <parameter name = "browser" value = "CHROME"/>
+    <classes>
+      <class name="com.nopcommerce.user.Level_09_Dynamic_Locator"/>
+    </classes>
+  </test> -->
+  
+</suite> 
