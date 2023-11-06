@@ -95,11 +95,11 @@ public class MapPageObject extends BasePage{
 		waitForElementClickable(driver, MapPageUI.PRIVATE_PORTGROUP);
 		clickToElement(driver, MapPageUI.PRIVATE_PORTGROUP);
 	}
+	
 	public void submitAddPGForm() {
 		waitForElementVisible(driver, MapPageUI.ADD_PORTGROUP_FORM);
 		submitForm(driver, MapPageUI.ADD_PORTGROUP_FORM);
-		waitingLoadingIcon(driver);
-		
+		waitingLoadingIcon(driver);	
 	}
 	
 	public void clickToAddInterfaceBtn() {
@@ -121,8 +121,28 @@ public class MapPageObject extends BasePage{
         clickToElement(driver, MapPageUI.VLANMODE_VALUE, VLANMODE_ID);
 	}
 	
-
+	public void submitAddInterfaceForm() {
+		waitForElementVisible(driver, MapPageUI.ADD_INTERFACE_FORM);
+		submitForm(driver, MapPageUI.ADD_INTERFACE_FORM);
+		waitingLoadingIcon(driver);	
+	}
 	
+	public void clickToConnectButton() {
+		waitForElementClickable(driver, MapPageUI.CONNECT_BTN);
+		clickToElement(driver, MapPageUI.CONNECT_BTN);
+		waitingLoadingIcon(driver);	
+		
+	}
+	public void clickToMapZoomButton() {
+		waitForElementClickable(driver, MapPageUI.MAP_ZOOM_DEFAULT);
+		clickToElement(driver, MapPageUI.MAP_ZOOM_DEFAULT);
+	}
+	public void clickToSaveButton() {
+		waitForElementClickable(driver, MapPageUI.MAP_SAVE_BUTTON);
+		clickToElement(driver, MapPageUI.MAP_SAVE_BUTTON);
+		waitingLoadingIcon(driver);	
+
+	}
 	
 	public boolean isValidationMessageDisplay() {
 		waitForElementVisible(driver, MapPageUI.VALIDATION_ERROR);

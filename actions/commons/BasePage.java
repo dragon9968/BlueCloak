@@ -54,6 +54,7 @@ public class BasePage {
 	
 	public void refreshCurrentPage(WebDriver driver) {
 		driver.navigate().refresh();
+		waitingLoadingIcon(driver);
 	}
 	
 	public void setCookies(WebDriver driver,Set<Cookie> cookies) {

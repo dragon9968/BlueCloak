@@ -7,8 +7,11 @@
       <class name="com.bluecloak.map.Sample_E2E_Test_Map">
         <methods>
           <include name="beforeClass"/>
+          <include name="BlueCloak_02_Create_Project"/>
+          <include name="BlueCloak_04_Add_PG_To_Map"/>
           <include name="BlueCloak_05_Add_Interface_To_Map"/>
           <include name="afterClass"/>
+          <include name="BlueCloak_03_Add_Node_To_Map"/>
         </methods>
       </class> <!-- com.bluecloak.map.Sample_E2E_Test_Map -->
     </classes>

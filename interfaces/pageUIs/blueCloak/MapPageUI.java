@@ -23,6 +23,12 @@ public class MapPageUI {
 	public static final String DIRECTION_VALUE = "XPath=//div[@class='option-text' and text()='%s']";
 	public static final String VLANMODE_TEXTFIELD = "XPath=//mat-select[@formcontrolname='vlanModeCtr']";
 	public static final String VLANMODE_VALUE = "XPath=//span[@class='mat-option-text' and text()='%s']";
+	public static final String ADD_INTERFACE_FORM = "XPath=//form[@data-cy='interfaceAddForm']";
+	public static final String CONNECT_BTN = "XPath=//button[@type='submit']//span[text()=' Connect ']";
+	public static final String MAP_ZOOM_DEFAULT = "CSS=.cy-panzoom-reset";
+	
+	public static final String MAP_SAVE_BUTTON = "CSS=[matTooltip='Save']";
+
 
 
 }

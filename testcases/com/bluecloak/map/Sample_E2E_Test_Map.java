@@ -11,8 +11,6 @@ import pageObjects.blueCloak.AddProjectPageObject;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -99,6 +97,15 @@ public class Sample_E2E_Test_Map extends BaseTest{
 	   mapPage.clickToAddInterfaceBtn();
 	   mapPage.selectDirectionInterface(" Inbound ");
 	   mapPage.selectVlanMode("Trunk");
+	   mapPage.submitAddInterfaceForm();
+	   sleepInSecond(1);
+	   mapPage.clickToConnectButton();
+	   sleepInSecond(1);
+	   mapPage.clickToSaveButton();
+	   mapPage.refreshCurrentPage(driver);
+	   sleepInSecond(2);
+	   mapPage.clickToMapZoomButton();
+
 
   }
 
