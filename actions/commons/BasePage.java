@@ -359,24 +359,24 @@ public class BasePage {
 	}
 	
 	public boolean isElementUndisplayed(WebDriver driver, String locatorType) {
-		System.out.println("Start Time = " + new Date().toString());
+		//System.out.println("Start Time = " + new Date().toString());
 		overrideImplicitTimeout(driver,SHORT_TIMEOUT);
 		
 		List<WebElement> elements = getListWebElement(driver, locatorType);
 		overrideImplicitTimeout(driver,LONG_TIMEOUT);
 
 		if (elements.size() == 0) {
-			System.out.println("Case 3 - Element ko co trong DOM");
-			System.out.println("End Time = " + new Date().toString());
+			//System.out.println("Case 3 - Element ko co trong DOM");
+			//System.out.println("End Time = " + new Date().toString());
 			return true;
 
 		} else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
-			System.out.println("Case 2 - Element co trong DOM nhung ko hien thi tren UI");
-			System.out.println("End Time = " + new Date());
+			//System.out.println("Case 2 - Element co trong DOM nhung ko hien thi tren UI");
+			//System.out.println("End Time = " + new Date());
 			return true;
 		}
 		else {
-			System.out.println("Case 1 - Element co trong DOM va hien thi tren UI");
+			//System.out.println("Case 1 - Element co trong DOM va hien thi tren UI");
 			return false;
 		}
 	}
@@ -408,6 +408,7 @@ public class BasePage {
  	public void clickAndHoldToElement(WebDriver driver, String locatorType) {
  		Actions action =  new Actions(driver);
  		action.moveToElement(getWebElement(driver, locatorType)).clickAndHold().perform();
+ 		action.release();
  	}
  	public void rightClickToElement(WebDriver driver, String locatorType ,int X, int Y) {
  		Actions action =  new Actions(driver);
@@ -419,7 +420,10 @@ public class BasePage {
  		action.moveToElement(getWebElement(driver, locatorType)).moveByOffset(X, Y).click().build().perform();
  		action.release();
  	}
- 	
+	public void dragAndDropBy(WebDriver driver, String locatorType, int X, int Y) {
+ 		Actions action =  new Actions(driver);
+ 		action.dragAndDropBy(getWebElement(driver, locatorType), X, Y).build().perform();
+ 	}
  
  	
  	public void doubleClickToElement(WebDriver driver, String locatorType) {

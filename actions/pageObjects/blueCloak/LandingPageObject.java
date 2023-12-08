@@ -24,6 +24,7 @@ public class LandingPageObject extends BasePage{
 		waitingLoadingIcon(driver);
 		waitForElementClickable(driver, LandingPageUI.ADD_NEW_PROJECT_BTN);
 		clickToElement(driver, LandingPageUI.ADD_NEW_PROJECT_BTN);
+		waitingLoadingIcon(driver);
 		//return PageGeneratorManager.getHomePage(driver);
 		
 	}
