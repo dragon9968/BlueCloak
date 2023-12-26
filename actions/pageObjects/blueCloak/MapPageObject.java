@@ -3,7 +3,9 @@ package pageObjects.blueCloak;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import commons.BasePage;
 import pageUIs.blueCloak.LandingPageUI;
@@ -45,6 +47,10 @@ public class MapPageObject extends BasePage{
 		waitForElementClickable(driver, MapPageUI.MINIMIZE_BTN);
 		clickToElement(driver, MapPageUI.MINIMIZE_BTN);
 	}
+	public void clickToMaximumButton() {
+		waitForElementClickable(driver, MapPageUI.MAXIMUM_BTN);
+		clickToElement(driver, MapPageUI.MAXIMUM_BTN);
+	}
 	
 	public void clickToMap(int X, int Y) {
 		waitForElementClickable(driver, MapPageUI.MAP);
@@ -57,7 +63,7 @@ public class MapPageObject extends BasePage{
 		rightClickToElement(driver, MapPageUI.MAP,X, Y);
 	}
 	
-	public void clickAndHoldNode(int X, int Y) {
+	public void clickAndHold(int X, int Y) {
 		waitForElementClickable(driver, MapPageUI.MAP);
 		clickAndHoldToElement(driver, MapPageUI.MAP);
 	}
@@ -67,16 +73,20 @@ public class MapPageObject extends BasePage{
 		clickToElement(driver, MapPageUI.NODE_CONTEXT_MENU);
 		isElementUndisplayed(driver, MapPageUI.CONNECT_INTERFACE);
 		clickToElement(driver, MapPageUI.CONNECT_INTERFACE);
-	}
+		waitingLoadingIcon(driver);
 
-	/*
-	 * public void getNodeNamefield() { waitForElementVisible(driver,
-	 * MapPageUI.NODE_NAME_TEXTFIELD); String abc = getElementAttributeValue(driver,
-	 * MapPageUI.NODE_NAME_TEXTFIELD, "value"); System.out.println(abc); }
-	 */
+	}
+	
+
+	public String getNamefield() { 
+     waitForElementVisible(driver,
+	 MapPageUI.NAME_TEXTFIELD);
+	 return getElementAttributeValue(driver,MapPageUI.NAME_TEXTFIELD, "value"); 
+	}
+	
 	public void enterToFolderTextfield(String folder) {
 		waitForAllElementVisible(driver, MapPageUI.FOLDER_TEXTFIELD);
-		String nodeName = getElementAttributeValue(driver, MapPageUI.NODE_NAME_TEXTFIELD, "value");
+		String nodeName = getElementAttributeValue(driver, MapPageUI.NAME_TEXTFIELD, "value");
 		sendkeyToElement(driver, MapPageUI.FOLDER_TEXTFIELD,folder + nodeName);
 	}
 	
@@ -84,6 +94,46 @@ public class MapPageObject extends BasePage{
 		waitForElementVisible(driver, MapPageUI.ADD_NODE_FORM);
 		submitForm(driver, MapPageUI.ADD_NODE_FORM);
 		waitingLoadingIcon(driver);
+		
+	}
+	
+	public void clickToStyleTab() {
+		waitForElementClickable(driver, MapPageUI.MAP_STYLE_TAB);
+		clickToElement(driver, MapPageUI.MAP_STYLE_TAB);	
+	}
+	public void clickToEditTab() {
+		waitForElementClickable(driver, MapPageUI.MAP_EDIT_TAB);
+		clickToElement(driver, MapPageUI.MAP_EDIT_TAB);	
+	}
+	
+	public void updateNodeSize(int X, int Y) {
+		waitForElementVisible(driver, MapPageUI.NODE_SIZE);
+		dragAndDropBy(driver, MapPageUI.NODE_SIZE, X, Y);	
+	}
+	public void updatePGSize(int X, int Y) {
+		waitForElementVisible(driver, MapPageUI.PORT_GROUP_SIZE);
+		dragAndDropBy(driver, MapPageUI.PORT_GROUP_SIZE,X, Y);	
+	}
+	
+	public void clickToPortGroupTab() {
+		waitForElementClickable(driver, MapPageUI.PORT_GROUP_TAB);
+		clickToElement(driver, MapPageUI.PORT_GROUP_TAB);	
+	}
+	
+	public void clickToNodesTab() {
+		waitForElementClickable(driver, MapPageUI.NODE_TAB);
+		clickToElement(driver, MapPageUI.NODE_TAB);
+		
+	}
+	
+	public void tickToPortGroupCheckbox(String PortGroup_Name) {
+		waitForElementClickable(driver, MapPageUI.RECORD_CHK,PortGroup_Name);
+		clickToElement(driver, MapPageUI.RECORD_CHK,PortGroup_Name);
+		
+	}
+	public void tickToNodesCheckbox(String Node_Name) {
+		waitForElementClickable(driver, MapPageUI.RECORD_CHK,Node_Name);
+		clickToElement(driver, MapPageUI.RECORD_CHK,Node_Name);
 		
 	}
 	
@@ -137,6 +187,12 @@ public class MapPageObject extends BasePage{
 		waitForElementClickable(driver, MapPageUI.MAP_ZOOM_DEFAULT);
 		clickToElement(driver, MapPageUI.MAP_ZOOM_DEFAULT);
 	}
+	
+	public void clickToMapZoomOutButton() {
+		waitForElementClickable(driver, MapPageUI.MAP_ZOOM_OUT);
+		clickToElement(driver, MapPageUI.MAP_ZOOM_OUT);
+	}
+	
 	public void clickToSaveButton() {
 		waitForElementClickable(driver, MapPageUI.MAP_SAVE_BUTTON);
 		clickToElement(driver, MapPageUI.MAP_SAVE_BUTTON);

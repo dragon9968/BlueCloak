@@ -33,11 +33,12 @@ public class AddProjectPageObject extends BasePage{
 		
 	}
 	public void selectOptionCheckbox() {
-		waitingLoadingIcon(driver);
+		//waitingLoadingIcon(driver);
 		waitForElementClickable(driver, AddProjectPageUI.OPTION);
 		clickToElement(driver, AddProjectPageUI.OPTION);
 	}
 	public void clickToCreatebutton() {
+		scrollToBottomPage(driver);
 		waitForElementClickable(driver, AddProjectPageUI.CREATE_BUTTON);
 		clickToElement(driver, AddProjectPageUI.CREATE_BUTTON);
     	waitingLoadingIcon(driver);
