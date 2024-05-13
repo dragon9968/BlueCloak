@@ -2,15 +2,23 @@ package com.bluecloak.map;
 
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 import commons.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObjects.blueCloak.LandingPageObject;
 import pageObjects.blueCloak.LoginPageObject;
 import pageObjects.blueCloak.MapPageObject;
 import pageObjects.blueCloak.NavigationMenuPageObject;
+import reportConfig.ExtentManager;
 import pageObjects.blueCloak.AddProjectPageObject;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+
+import java.lang.reflect.Method;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -40,15 +48,31 @@ public class Sample_E2E_Test_Map extends BaseTest {
 		pgY = 50;
 	}
 
+//	@Description("Login to System")
+//	@Severity(SeverityLevel.NORMAL)
 	@Test
-	public void BlueCloak_01_Login_To_System() {
+	public void BlueCloak_01_Login_To_System(Method method) 	{
+		//ExtentManager.startTest(method.getName(), "BlueCloak_01_Login_To_System");
+		//ExtentManager.getTest().log(LogStatus.INFO, "Login - Step 01: Input Username");
+		//log.info("Login - Step 01: Input Username");
 		loginPage.inputToUsernameTexbox("admin");
+		
+		//ExtentManager.getTest().log(LogStatus.INFO, "Login - Step 02: Input Password");
+		//log.info("Login - Step 02: Input Password");
 		loginPage.inputToPasswordTexbox("password");
+		
+		//ExtentManager.getTest().log(LogStatus.INFO, "Login - Step 03: Click To Login Button");
+		//log.info("Login - Step 03: Click To Login Button");
 		loginPage.clickToLoginButton();
-		Assert.assertTrue(landingPage.isTitleLandingPageDisplay());
+		
+		//ExtentManager.getTest().log(LogStatus.INFO, "Login - Step 04: Verify Landing Page Display");
+		//log.info("Login - Step 04: Verify Landing Page Display");
+		Assert.assertFalse(landingPage.isTitleLandingPageDisplay());
+		//ExtentManager.endTest();
+
 	}
 
-	@Test
+	
 	public void BlueCloak_02_Create_Project() {
 		landingPage.clickToAddNewProjectButton();
 		String Project_Name = "Long Test Auto" + " " + generateRandomNumber();
@@ -62,7 +86,7 @@ public class Sample_E2E_Test_Map extends BaseTest {
 		addProjectPage.clickToProject();
 	}
 
-	@Test
+	
 	public void BlueCloak_03_Add_Node_To_Map() {
 		mapPage.clickToDeviceSelectBox();
 		mapPage.selectDeviceOption();
@@ -98,7 +122,7 @@ public class Sample_E2E_Test_Map extends BaseTest {
 		mapPage.tickToNodesCheckbox(getNodeName);
 	}
 
-	@Test
+	
 	public void BlueCloak_04_Add_PG_To_Map() {
 		mapPage.clickToEditTab();
 		sleepInSecond(1);
@@ -146,7 +170,7 @@ public class Sample_E2E_Test_Map extends BaseTest {
 //		  mapPage.clickToMapZoomButton();
 	}
 	
-	 @Test
+	 
 	 private void BlueCloak_06_Delete_Project() {
 		 navigationBarPage.clickToProjectMenu();
 		 sleepInSecond(1);

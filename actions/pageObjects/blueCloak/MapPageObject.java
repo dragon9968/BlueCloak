@@ -13,6 +13,7 @@ import pageUIs.blueCloak.MapPageUI;
 
 public class MapPageObject extends BasePage{
 	private WebDriver driver;
+	
 	public MapPageObject(WebDriver driver) {
 		this.driver = driver;
 	}

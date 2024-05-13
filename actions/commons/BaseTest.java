@@ -23,9 +23,17 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class BaseTest {
+	
+	protected BaseTest() {
+		log = LogFactory.getLog(getClass());
+	}
+
 	private WebDriver driverBaseTest;
+	protected final Log log;
 	
 	public WebDriver getBrowserName(String browserName) {
 		if (browserName.equalsIgnoreCase("fireFox")) {
