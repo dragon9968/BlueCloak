@@ -1,2 +1,7 @@
 /bin/
 /test-output/
+/libLog4j/
+/libReportNG/
+/libExtendReportV2/
+/ExtentReportV2/
+/libAllureReport/

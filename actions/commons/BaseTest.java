@@ -17,13 +17,23 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class BaseTest {
+	
+	protected BaseTest() {
+		log = LogFactory.getLog(getClass());
+	}
+
 	private WebDriver driverBaseTest;
+	protected final Log log;
 	
 	public WebDriver getBrowserName(String browserName) {
 		if (browserName.equalsIgnoreCase("fireFox")) {
@@ -32,14 +42,19 @@ public class BaseTest {
 			//Dùng thư viện WebDriverManager để tải browser Driver về một cách tự động
 			//WebDriverManager.firefoxdriver().setup();
 			driverBaseTest = new FirefoxDriver();
+			driverBaseTest.manage().window().maximize();	
 		} else if(browserName.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", GlobalConstants.PROJECT_PATH + "\\browserDrivers\\chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 			options.setExperimentalOption("useAutomationExtension", false);
 			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+			options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+			options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS,true);
 			
 			//WebDriverManager.chromedriver().setup();
 			driverBaseTest = new ChromeDriver(options);
+			driverBaseTest.manage().window().maximize();	
+
 		}
 		
 		else {
